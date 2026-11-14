@@ -51,3 +51,12 @@ Raw resumes are analyzed in memory and not saved to the application database. Pe
 ## Releases
 
 Keep previous Git commits and deployed services until the new deployment is verified. Do not delete history, branches or existing user data to reconstruct the frontend.
+
+
+## Optional OpenRouter AI Career Coach
+
+The workspace includes `/app/coach`. This is an **opt-in educational assistant** using OpenRouter's chat-completions API. It is separate from the deterministic resume/forecasting pipeline. Only selected career role, derived skills, keyword-alignment score, and a short user-written question are sent to OpenRouter; raw resumes and PDFs are **not** sent.
+
+Set `OPENROUTER_API_KEY` in the **Render `jobpulse-v3-web` web service → Environment** (or in local server-only `apps/web/.env.local`). Never use `NEXT_PUBLIC_OPENROUTER_API_KEY` or commit the key. The optional `OPENROUTER_MODEL` defaults to `openrouter/free`, which is rate limited. The coach returns a clear 'not configured' message when no key is available, while resume analysis, skill gaps, roadmaps, synthetic forecasts, and PDFs continue to work.
+
+The public guest AI endpoint has lightweight per-process limits (3 requests / 15 minutes / IP, 40 requests / day / process); **this is not robust distributed rate limiting**. Add a persistent quota/Turnstile before high-traffic or paid-model usage. Use OpenRouter provider privacy settings appropriate for any data sent, and never upload sensitive resume contents to the AI service.

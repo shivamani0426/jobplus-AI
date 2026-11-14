@@ -2,7 +2,7 @@
 import {useState} from 'react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {Activity,ArrowRight,BookOpen,ChartNoAxesCombined,ChevronDown,ChevronRight,Compass,FileCheck2,FileText,House,LayoutDashboard,LogOut,Menu,Settings2,ShieldCheck,Users,UserRound,X} from 'lucide-react'
+import {Activity,ArrowRight,BookOpen,ChartNoAxesCombined,ChevronDown,ChevronRight,Compass,BrainCircuit,FileCheck2,FileText,House,LayoutDashboard,LogOut,Menu,Settings2,ShieldCheck,Users,UserRound,X} from 'lucide-react'
 import {Brand} from './brand'
 import {Providers,useJobPulse} from './providers'
 import {roles} from '@/lib/catalog'
@@ -10,6 +10,7 @@ import {browserSupabase} from '@/lib/supabase'
 const nav=[
  {href:'/app',label:'Overview',Icon:LayoutDashboard},
  {href:'/app/resume',label:'Resume studio',Icon:FileText},
+ {href:'/app/coach',label:'AI Career Coach',Icon:BrainCircuit},
  {href:'/app/market',label:'Market intelligence',Icon:ChartNoAxesCombined},
  {href:'/app/roadmap',label:'Learning roadmap',Icon:Compass},
  {href:'/app/reports',label:'My reports',Icon:FileCheck2},
