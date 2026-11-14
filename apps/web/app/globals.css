@@ -25,3 +25,57 @@
 @media(max-width:720px){.story-hero{min-height:665px;padding:65px 15px 0}.story-hero h1{font-size:clamp(59px,12vw,88px)}.story-hero-sub{font-size:12px}.story-hero-cta{gap:7px}.story-button{padding:13px 15px;font-size:10px;gap:7px}.story-hero-mascot{bottom:-102px;transform:translateX(-50%) scale(.9)}.story-bubble{scale:.75}.bubble-one{left:-25px;bottom:160px}.bubble-two{right:-33px;bottom:150px}.scroll-hint{bottom:18px;right:16px;font-size:8px}.chapter-band{margin:80px auto}.chapter-band h2{font-size:clamp(48px,11vw,76px)}.chapter-band p{font-size:12px}.positioning-panel{min-height:620px;padding:112px 15px 130px}.positioning-panel h2{font-size:clamp(66px,13vw,100px)}.positioning-panel p{font-size:12px}.positioning-flair{width:48px;height:48px;border-radius:16px}.positioning-flair svg{height:22px;width:22px}.flair-one{left:5%;top:6%}.flair-two{right:6%;top:10%}.flair-three{left:9%;bottom:9%}.positioning-peek{right:5%}.capabilities-panel{padding:46px 15px;min-height:820px}.capabilities-panel h2{font-size:clamp(60px,12vw,85px)}.capabilities-panel>p{font-size:12px}.floating-cap.cap-resume{top:30%;left:2%;width:50%;transform:rotate(-5deg)}.floating-cap.cap-score{top:33%;right:2%;width:38%;transform:rotate(5deg)}.cap-score-circle{height:65px;width:65px;border-width:8px;font-size:20px}.cap-learning{left:4%!important;bottom:9%;width:47%;transform:rotate(3deg)}.cap-insight{right:4%!important;bottom:11%;width:40%;transform:rotate(-4deg)}.floating-cap{padding:11px}.floating-cap strong{font-size:11px}.cap-label{font-size:8px}.media-panel{grid-template-columns:1fr;min-height:1070px;text-align:center;padding:42px 20px 0}.media-copy{padding-bottom:0}.media-copy h2{font-size:clamp(61px,11vw,90px)}.media-copy p{font-size:12px;margin:0 auto 17px}.mockup-holder{align-items:flex-end}.phone-frame{height:510px;width:280px}.media-pip{right:0}.care-band{margin:75px auto}.care-grid{grid-template-columns:1fr;margin-top:35px}.care-card{min-height:unset}.final-panel{padding:80px 17px;min-height:560px}.final-panel h2{font-size:clamp(63px,12vw,98px)}.final-panel p{font-size:12px}.final-left{left:-35px;bottom:-38px;scale:.7}.final-sticker{right:-5%;bottom:2%;scale:.75}.story-footer{flex-direction:column;text-align:center;padding-bottom:24px}.story-footer>div{gap:15px;flex-wrap:wrap;justify-content:center}.sidebar{position:fixed;width:min(85vw,300px);transform:translateX(-105%);transition:transform .25s;z-index:90;box-shadow:20px 0 50px #0008}.sidebar.sidebar-open{transform:translateX(0)}.mobile-overlay{display:block;position:fixed;inset:0;background:#000a;z-index:80;border:0}.mobile-close,.mobile-open{display:grid;place-items:center}.workspace-main{width:100%}.workspace-header{min-height:65px;padding:12px 18px}.workspace-content{padding:25px 17px}.workspace-footer{padding:15px 18px}.dashboard-intro,.page-heading{align-items:flex-start;flex-direction:column}.dashboard-orb{right:-85px;opacity:.35}.dashboard-hero{padding:28px 22px}.dashboard-hero h2{font-size:51px}.dashboard-hero-copy p{max-width:265px}.metric-grid{gap:10px}.metric{padding:15px}.metric-value{font-size:18px}.market-filter{flex-wrap:wrap;gap:12px}.market-filter .spacer{display:none}.analysis-main{flex-direction:column;align-items:flex-start}.analysis-columns,.two-col,.methodology-grid,.settings-grid,.team-grid{grid-template-columns:1fr}.resume-side{grid-template-columns:1fr}.roadmap-banner{flex-direction:column;align-items:flex-start}.login-screen{grid-template-columns:1fr}.login-left{display:none}.login-right{min-height:100vh}.workspace-footer{flex-direction:column}}
 @media(max-width:430px){.nav-pill-quiet{display:none}.story-nav-inner{padding:0 18px}.story-hero h1{font-size:54px}.story-hero{min-height:655px}.story-kicker{font-size:8px}.story-hero-sub{max-width:315px}.story-hero-cta{flex-wrap:wrap}.story-bubble{scale:.62}.bubble-one{left:-46px}.bubble-two{right:-49px}.careers-copy h2{font-size:65px}.career-row{padding:10px}.capabilities-panel{min-height:850px}.floating-cap.cap-resume{width:56%}.floating-cap.cap-score{width:38%}.cap-learning{width:53%}.cap-insight{width:42%}.media-panel{min-height:1020px}.phone-frame{transform:rotate(3deg) scale(.9);transform-origin:bottom center}.final-sticker{display:none}.metric-grid{grid-template-columns:1fr 1fr}.market-graph{height:260px}.bread-home{display:none}.role-control select{max-width:135px}.result-bottom{flex-wrap:wrap}.result-bottom a{margin:5px 0}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+
+/* AI Career Coach — additive JobPulse module; follows the live site's theme. */
+.dashboard-hero-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.coach-hero-action{border-color:#ffffff80!important;color:#fff!important;background:#ffffff1c!important}
+.coach-hero-action:hover{background:#ffffff33!important}
+.demo-sample-button{margin:0 0 18px;padding:10px 15px;border-radius:14px;background:#7e72ef20;border:1px solid #a99df34d;color:#d9d2ff;display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;transition:background .2s}
+.demo-sample-button:hover{background:#7e72ef35}
+.coach-roadmap-link{display:flex;align-items:center;gap:12px;border-radius:18px;padding:15px 18px;margin-bottom:20px;background:#7668e722;border:1px solid #7767df4d;color:#dcd6ff;font-size:13px}
+.coach-roadmap-link span{flex:1}
+.coach-roadmap-link a{display:inline-flex;align-items:center;gap:7px;font-weight:800;color:#fff}
+.coach-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,.72fr);gap:22px;align-items:start}
+.coach-main{padding:30px;display:flex;flex-direction:column;gap:21px}
+.coach-intro{display:flex;align-items:center;gap:17px}
+.coach-intro h2{font-family:'Barlow Condensed',sans-serif;font-size:35px;font-weight:900;text-transform:uppercase;line-height:1;margin:0 0 9px}
+.coach-intro p{margin:0;color:#aaa9c7;font-size:13px}
+.coach-intro strong{color:#e1ddff}
+.coach-icon{width:58px;height:58px;display:grid;place-items:center;flex-shrink:0;border-radius:18px;background:linear-gradient(135deg,#625cf1,#8e7bea);color:white;box-shadow:0 12px 25px #4d36bc4d}
+.coach-context,.coach-notice{display:flex;align-items:flex-start;gap:12px;padding:15px 17px;border-radius:17px;font-size:13px;line-height:1.65}
+.coach-context{background:#7b6cf61c;border:1px solid #7b6cf637;color:#c6c3e4}
+.coach-context svg{flex-shrink:0;margin-top:2px;color:#ad9fff}
+.coach-context a{font-weight:800;text-decoration:underline;color:#e6ddff}
+.coach-notice{background:#ffca9220;border:1px solid #ffc78c48;color:#ffe5ca}
+.coach-notice svg{flex-shrink:0;margin-top:3px}
+.coach-notice strong{display:block;font-weight:800}
+.coach-notice p{font-size:12px;line-height:1.55;margin:5px 0 0;color:#e9c8af}
+.coach-form{display:grid;gap:12px}
+.coach-form label{font-size:13px;font-weight:800;color:#f9f8ff}
+.coach-form textarea{resize:vertical;width:100%;min-height:120px;background:#151525;border:1px solid #ffffff30;color:#fff;border-radius:15px;padding:16px;font-size:14px;line-height:1.6}
+.coach-form textarea:focus{outline:2px solid #9890fa}
+.coach-chips{display:flex;gap:8px;flex-wrap:wrap}
+.coach-chips button{border-radius:99px;font-size:11px;font-weight:700;background:#292740;border:1px solid #ffffff20;color:#d7d3ef;padding:8px 12px;transition:background .2s}
+.coach-chips button:hover{background:#3a3665}
+.coach-form-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding-top:9px}
+.coach-form-bottom small{display:flex;align-items:center;gap:7px;color:#adabc5;font-size:10px;line-height:1.6;flex:1;min-width:185px}
+.coach-form-bottom .button{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.coach-answer{padding:22px 24px;background:linear-gradient(145deg,#2c2854,#201e3a);border:1px solid #9c8df75a;border-radius:18px}
+.coach-answer-title{display:flex;align-items:center;gap:10px;margin-bottom:13px;color:#b8a9ff}
+.coach-answer-title h3{font-size:17px;font-weight:800;margin:0;color:white}
+.coach-answer-text{white-space:pre-wrap;font-size:14px;line-height:1.8;color:#f3efff;margin:0 0 17px}
+.coach-answer small{font-size:10px;color:#a6a1c5}
+.coach-side{display:grid;gap:20px}
+.coach-side-hero{min-height:280px;padding:25px;border-radius:23px;background:radial-gradient(circle at 80% 12%,#c1a5ff8e,transparent 35%),linear-gradient(140deg,#454ce5,#766df0);color:white;box-shadow:0 15px 35px #2923b43b}
+.coach-side-hero h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:54px;line-height:.86;font-weight:900;margin:20px 0}
+.coach-side-hero p{font-size:13px;line-height:1.6;color:#efedff}
+.coach-side-hero a{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:800;margin-top:7px}
+.coach-side-note{padding:24px}
+.coach-side-note svg{color:#baa9ff}
+.coach-side-note h3{font-weight:800;font-size:17px;margin:14px 0 8px}
+.coach-side-note p{font-size:13px;color:#a7a4c6;line-height:1.7;margin:0}
+@media(max-width:900px){.coach-layout{grid-template-columns:1fr}.coach-side{grid-template-columns:1fr 1fr}.coach-side-hero{min-height:240px}}
+@media(max-width:600px){.coach-main{padding:19px}.coach-layout{gap:14px}.coach-side{grid-template-columns:1fr}.coach-form-bottom .button{width:100%;justify-content:center}.coach-roadmap-link{flex-wrap:wrap}.coach-roadmap-link a{width:100%}.coach-intro h2{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.coach-side-hero,.coach-icon{animation:none}}

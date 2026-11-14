@@ -88,3 +88,38 @@ test('mobile navigation opens and reaches the resume studio', async ({ page, isM
   await expect(page.getByRole('button', { name: /Generate skills analysis/i })).toBeVisible()
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
 })
+
+
+test('guest AI coach is optional and can answer a mocked career question', async ({ page, request }) => {
+  const liveStatus = await request.get('/api/ai/coach')
+  expect(liveStatus.status()).toBe(200)
+  const status = await liveStatus.json()
+  expect(typeof status.configured).toBe('boolean')
+  expect(status.guest_access).toBe(true)
+
+  let requests = 0
+  await page.route('**/api/ai/coach', async route => {
+    if (route.request().method() === 'GET') {
+      return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({configured:true,model:'openrouter/free',guest_access:true})})
+    }
+    const body = route.request().postDataJSON()
+    expect(body.role_id).toBe('data-scientist')
+    expect(JSON.stringify(body)).not.toContain('resume_text')
+    requests += 1
+    return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({answer:'1. Practice SQL with a sample project.\n2. Build a Python portfolio.\n3. Document your learning.',model:'test/mock',disclaimer:'Educational guidance only.'})})
+  })
+  await page.goto('/app/coach')
+  await expect(page.getByRole('heading',{name:/AI Career Coach/i}).first()).toBeVisible()
+  await page.getByLabel('What would you like help with?').fill('Suggest three beginner projects for this career.')
+  await page.getByRole('button',{name:/Get career guidance/i}).click()
+  await expect(page.getByText(/Practice SQL with a sample project/)).toBeVisible()
+  expect(requests).toBe(1)
+})
+
+test('guest demo can load a fictional resume without signing in', async ({ page }) => {
+  await page.goto('/app/resume')
+  await page.getByRole('button',{name:/Load a fictional student resume/i}).click()
+  await expect(page.getByLabel('Resume details')).toContainText('Fictional student resume')
+  await page.getByRole('button',{name:/Generate skills analysis/i}).click()
+  await expect(page.locator('.analysis-result')).toBeVisible({timeout:60_000})
+})
