@@ -28,6 +28,32 @@ jobs:
           c.drawString(35,720,'Student projects using Python SQL Pandas statistics NumPy and Git')
           c.save()
           PY
+      - name: Probe Python API and web proxy directly
+        run: |
+          python - <<'PY'
+          import urllib.request, urllib.error, time
+          checks = {
+              'python_direct': 'https://jobpulse-v3-intelligence.onrender.com/healthz',
+              'web_to_python': 'https://jobpulse-v3-web.onrender.com/api/intelligence/v1/market?role_id=data-scientist&horizon=6'
+          }
+          results = {}
+          for name,url in checks.items():
+              for attempt in range(3):
+                  try:
+                      with urllib.request.urlopen(url,timeout=35) as response:
+                          results[name] = response.status
+                          print(name,'HTTP',response.status,response.read(240).decode('utf-8','replace'))
+                          break
+                  except urllib.error.HTTPError as err:
+                      print(name,'HTTP',err.code,err.read(240).decode('utf-8','replace'))
+                      results[name] = err.code
+                  except Exception as err:
+                      print(name,'connection error',type(err).__name__,str(err)[:140])
+                      results[name] = 0
+                  time.sleep(5)
+          if any(status != 200 for status in results.values()):
+              raise SystemExit('Live API probe failed; see status and response above')
+          PY
       - name: Check live health before browser run
         run: |
           python - <<'PY'
