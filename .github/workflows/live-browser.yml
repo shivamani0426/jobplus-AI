@@ -54,6 +54,19 @@ jobs:
           if any(status != 200 for status in results.values()):
               raise SystemExit('Live API probe failed; see status and response above')
           PY
+      - name: Check optional OpenRouter coach status on live website
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          url = 'https://jobpulse-v3-web.onrender.com/api/ai/coach'
+          with urllib.request.urlopen(url, timeout=40) as r:
+              assert r.status == 200
+              value = json.load(r)
+          assert isinstance(value.get('configured'), bool)
+          assert value.get('guest_access') is True
+          assert 'OPENROUTER_API_KEY' not in value
+          print('Public AI coach status available; configured:', value['configured'])
+          PY
       - name: Check live health before browser run
         run: |
           python - <<'PY'
