@@ -1,0 +1,15 @@
+# Optional reference architecture. Existing resources are managed through Render.
+services:
+  - type: web
+    name: jobpulse-career-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn backend.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+  - type: web
+    name: jobpulse-careercatalysts
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
