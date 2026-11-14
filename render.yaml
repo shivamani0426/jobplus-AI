@@ -1,15 +1,29 @@
-# Optional reference architecture. Existing resources are managed through Render.
+# JobPulse monorepo: both applications are Render Python/Node web services.
 services:
   - type: web
-    name: jobpulse-career-api
+    name: jobpulse-v3-web
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: cd apps/web && npm install --no-audit && npm run build
+    startCommand: cd apps/web && npm run start -- --port $PORT
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: INTELLIGENCE_API_URL
+        fromService:
+          type: web
+          name: jobpulse-v3-intelligence
+          property: host
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+        sync: false
+  - type: web
+    name: jobpulse-v3-intelligence
     runtime: python
     plan: free
     region: singapore
-    buildCommand: pip install -r requirements-api.txt
-    startCommand: uvicorn backend.api:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /health
-  - type: web
-    name: jobpulse-careercatalysts
-    runtime: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    buildCommand: pip install -r services/intelligence/requirements.txt
+    startCommand: cd services/intelligence && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
