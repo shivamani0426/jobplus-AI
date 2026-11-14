@@ -60,3 +60,21 @@ The workspace includes `/app/coach`. This is an **opt-in educational assistant**
 Set `OPENROUTER_API_KEY` in the **Render `jobpulse-v3-web` web service → Environment** (or in local server-only `apps/web/.env.local`). Never use `NEXT_PUBLIC_OPENROUTER_API_KEY` or commit the key. The optional `OPENROUTER_MODEL` defaults to `openrouter/free`, which is rate limited. The coach returns a clear 'not configured' message when no key is available, while resume analysis, skill gaps, roadmaps, synthetic forecasts, and PDFs continue to work.
 
 The public guest AI endpoint has lightweight per-process limits (3 requests / 15 minutes / IP, 40 requests / day / process); **this is not robust distributed rate limiting**. Add a persistent quota/Turnstile before high-traffic or paid-model usage. Use OpenRouter provider privacy settings appropriate for any data sent, and never upload sensitive resume contents to the AI service.
+
+
+## Free-tier standby mode
+
+The normal FastAPI service remains the authoritative implementation of skills,
+synthetic market forecasts and downloadable PDF reports. When its **free Render
+instance is asleep or temporarily unreachable**, the Next.js server can compute
+the same educational keyword rubric and demo trend with a restricted local
+standby module. PDF files still require the Python service for safe text extraction,
+so the UI explains that PDF users should retry after the service wakes or paste
+resume text.
+
+Local standby reports are generated with pdf-lib and do not upload files to
+Supabase. The backup is intentionally limited to public, deterministic student
+demo operations; it does not use OpenRouter or Supabase storage. The Next.js
+proxy advertises \`X-JobPulse-Mode: local-standby\` on standby responses.
+GitHub CI runs a separate browser suite with an unreachable backend to
+verify this fallback, alongside the normal full-stack tests.
